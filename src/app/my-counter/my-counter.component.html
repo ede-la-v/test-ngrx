@@ -1,0 +1,22 @@
+<button (click)="increment()">Increment</button>
+
+<div>Current Count: {{ count$ | async }}</div>
+
+<button (click)="decrement()">Decrement</button>
+
+<button (click)="reset()">Reset Counter</button>
+
+<hr>
+
+<button (click)="incrementOgma()">Increment</button>
+
+<div>Current Count: {{ countOgma$ | async }}</div>
+
+<button (click)="decrementOgma()">Decrement</button>
+
+<button (click)="resetOgma()">Reset Counter</button>
+
+<hr>
+
+<div>Addition: {{ addition$ | async }}</div>
+<div>Addition2: {{ addition2$ | async }}</div>
