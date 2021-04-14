@@ -31,12 +31,12 @@ export class MyCounterComponent implements OnInit {
         map(selectCount),
         distinctUntilChanged((p, n) => isEqual(p, n))
       );
-    this.countOgma$ = getCount;
+    this.countOgma$ = getCount(storeOgma);
 
     console.log('######creating first');
-    this.addition$ = additionSelector(this.store);
+    this.addition$ = additionSelector(this.store, storeOgma);
     console.log('######creating second');
-    this.addition2$ = additionSelector2(this.store);
+    this.addition2$ = additionSelector2(this.store, storeOgma);
     console.log('finish all');
   }
 

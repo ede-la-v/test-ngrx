@@ -1,15 +1,7 @@
-import { combineLatest, Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { FeatureState } from '../store/counter.reducer';
-import { storeOgma } from './store';
+import { createSelectorOgma } from '../globalStore/utils';
+import { AppState } from '../store/counter.reducer';
 
-function createFeatureSelectorOgma<T>(feature: string): Observable<T> {
-    return storeOgma.pipe(map(state => state[feature]));
-}
 
-function createSelectorOgma<T>(selectors: Observable<unknown>[], mapFn: (...args) => T): Observable<T> {
-    return combineLatest(selectors).pipe(map((args) => mapFn(...args)));
-}
-const stateFeature = createFeatureSelectorOgma<FeatureState>('feature');
-export const getCount = createSelectorOgma([stateFeature], (state: FeatureState) => state.counter);
+// Here we only create a simple mapping of the globa ogma state to get the counter
+export const getCount = createSelectorOgma<number>((state: AppState) => state.feature.counter);
 
